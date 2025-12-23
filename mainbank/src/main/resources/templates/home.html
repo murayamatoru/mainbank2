@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/css/Page.css}" rel="stylesheet">
+<link th:href="@{/css/Header.css}" rel="stylesheet">
+<link th:href="@{/css/Menu.css}" rel="stylesheet">
+<link th:href="@{/css/MainBankList.css}" rel="stylesheet">
+<link th:href="@{/css/Footer.css}" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title th:text="取引銀行管理システム"></title>
+<style>
+	/* 共通リセット */
+	ul, li {
+	  margin: 0;
+	  padding: 0;
+	  list-style: none;
+	}	
+</style>
+</head>
+<body>
+<div class="Page">
+    <header class="Header">
+		ここはヘッダーです　
+        <span th:text="${Title}"></span>
+    </header>
+	
+<!-- メニュー部をインサート -->
+<div th:insert="fragments/menu :: mainMenu"></div>
+	
+    <div class="MainBankList">
+        <div>
+            <table class="table">
+                <thead>
+					<tr>
+					  <th onclick="sortTable(0)">使用目的<span class="sort-arrow"></span></th>
+					  <th onclick="sortTable(1)">責任部署<span class="sort-arrow"></span></th>
+					  <th onclick="sortTable(2)">銀行<span class="sort-arrow"></span></th>
+					  <th onclick="sortTable(3)">支店<span class="sort-arrow"></span></th>
+					  <th onclick="sortTable(4)">口座番号<span class="sort-arrow"></span></th>
+					  <th onclick="sortTable(5)">残高<span class="sort-arrow"></span></th>
+					</tr>
+                </thead>
+                <tbody>
+                    <tr>
+						<td>資材購入</td>
+						<td>工事部</td>
+                       <td>福岡市民銀行</td>
+                        <td>駅前支店</td>
+                        <td>F1234567</td>
+                        <td>1,000円</td>
+                    </tr>
+                    <tr>
+						<td>作業費支払</td>
+						<td>工事部</td>
+						<td>佐賀市民銀行</td>
+						<td>本店</td>
+						<td>S1212123</td>
+						<td>50,000円</td>
+                    </tr>
+                    <tr>
+						<td>Amazon支払</td>
+						<td>総務部</td>
+						<td>長崎地域ミドリ銀行</td>
+						<td>県庁内支店</td>
+						<td>N5656567</td>
+						<td>10,000円</td>
+                    </tr>
+                    <tr>
+						<td>広告費支払</td>
+						<td>営業部 </td>
+						<td>熊本合同銀行</td>
+						<td>阿蘇出張所</td>
+						<td>A456456</td>
+						<td>1.000,000円</td>
+                    </tr>                    
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <Footer class="Footer">
+        ここはフッターです　
+		<a class="ActionBtn" th:href="@{/test/data/create}">テストデータ作成</a>
+    </Footer>
+</div>
+
+<script>
+let sortDirection = {}; // 列ごとのソート方向を保持
+function sortTable(columnIndex) {
+    const table = document.querySelector(".MainBankList table");
+    const tbody = table.querySelector("tbody");
+    const rows = Array.from(tbody.querySelectorAll("tr"));
+    const headers = table.querySelectorAll("thead th");
+    // 昇順/降順の切り替え
+    const direction = sortDirection[columnIndex] === "asc" ? "desc" : "asc";
+    sortDirection[columnIndex] = direction;
+    // 日本円用の変換関数
+    const parseYen = (text) => {
+        return parseFloat(text.replace(/[,円.]/g, "") || "0");
+    };
+    // ソート処理
+    rows.sort((a, b) => {
+        const aText = a.children[columnIndex].textContent.trim();
+        const bText = b.children[columnIndex].textContent.trim();
+        let aVal, bVal;
+        if (columnIndex === 5) { // 残高列（6列目）
+            aVal = parseYen(aText);
+            bVal = parseYen(bText);
+        } else {
+            aVal = aText.toLowerCase();
+            bVal = bText.toLowerCase();
+        }
+        if (aVal < bVal) return direction === "asc" ? -1 : 1;
+        if (aVal > bVal) return direction === "asc" ? 1 : -1;
+        return 0;
+    });
+    // tbody に再追加
+    rows.forEach(row => tbody.appendChild(row));
+
+    // 矢印の更新処理
+    headers.forEach((th, i) => {
+        const arrow = th.querySelector(".sort-arrow");
+        if (!arrow) return;
+        if (i === columnIndex) {
+            arrow.textContent = direction === "asc" ? "▲" : "▼";
+            arrow.classList.add("active");
+        } else {
+            arrow.textContent = "";
+            arrow.classList.remove("active");
+        }
+    });
+}
+</script>
+
+</body>
+</html>

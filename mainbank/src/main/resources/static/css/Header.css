@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+    .Header {
+		grid-row: 1;
+		grid-column: 1;
+      padding: 1em;
+        background: #aaa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+

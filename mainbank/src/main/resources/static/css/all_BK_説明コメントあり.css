@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+	/*
+	(1) ダークモード
+	(2) 目的が違うセレクタ
+	セレクタにはGridLayoutの場所を指定するような情報と、見栄えを指定数るような情報がある。
+	混在させずに分けた方が良さそうだ。
+	*/
+	
+    /* 全体スクロールバーを非表示に */
+    body {
+        overflow: hidden;
+        margin: 0;
+    }
+
+    /* ページに余白を追加 */
+    .page {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        /* height: 100vh - 40px); */ /* 余白分だけ高さを調整 */
+        height: 100vh; /* 余白分の高さ調整は不要*/
+       padding: 20px; /* 周囲に余白を追加 */
+        box-sizing: border-box; /* paddingを含めてサイズを計算 */
+        background-color: black; /* #f5f5f5; */ /* 余白部分の背景色（必要に応じて変更） */
+    }
+
+    .main {
+        overflow-y: auto;
+        background-color: white;
+    }
+    
+    .main table {
+        width: 900px;
+    }
+
+    .header {
+        padding: 1em;
+        background: #aaa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+	.footer {
+	    padding: 1em;
+	    background: #aaa;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	}
+
+    /* テーブルのスタイル設定 */
+    .main table {
+        border-collapse: collapse;
+        /* width: 100%; */
+        width: 900px;
+    }
+	
+	.main thead th {
+		position: sticky;
+		top: 0;
+		background-color: black;
+		color: white;
+		z-index: 1;
+		box-shadow: 0px 2px 0px black;	}
+	
+    .main th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+        background-color: pink;
+    }
+	
+	.footer {
+		.ActionBtn {
+          border-radius: 100px;  /*  角丸*/
+		  outline: 2px solid blue; /* 太さ2ピクセルの青い実線アウトライン */
+		  padding: 10px 20px; /* ボタンのpadding */
+		  border: none; /* borderを削除 */
+		}
+	
+		.ActionBtn:hover {
+		  outline: 2px dashed white; /* フォーカス時に太さ2ピクセルの赤の点線アウトライン */
+		}
+	}
+	
+/* 
+上のコードはネストCSSを使った書き方でありW3Cの検証ツールではエラーになる可能性がある。
+ブラウザでは期待通りに動く。2025.6 Windows10 最新 Chrome
+CSS純粋の書き方にする場合は、以下のように書く。
+.footer .ActionBtn {
+	outline: 2px solid blue;
+	padding: 10px 20px;
+	border: none;
+}
+.footer .ActionBtn:focus {
+	outline: 2px dashed red;
+}
+/*
+
+*/

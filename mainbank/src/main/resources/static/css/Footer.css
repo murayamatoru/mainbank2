@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+	.Footer {
+		grid-row: 4;
+		grid-column: 1;
+	    padding: 1em;
+	    background: #aaa;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	}
+
+	.Footer {
+		.ActionBtn {
+          border-radius: 100px;  /*  角丸*/
+		  outline: 2px solid blue; /* 太さ2ピクセルの青い実線アウトライン */
+		  padding: 10px 20px; /* ボタンのpadding */
+		  border: none; /* borderを削除 */
+		}
+	
+		.ActionBtn:hover {
+		  outline: 2px dashed white; /* フォーカス時に太さ2ピクセルの赤の点線アウトライン */
+		}
+	}
+	
