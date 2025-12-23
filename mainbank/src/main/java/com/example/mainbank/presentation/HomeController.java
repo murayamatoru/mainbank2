@@ -1,4 +1,4 @@
-package com.example.mainbank.presentaion;
+package com.example.mainbank.presentation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.mainbank.application.TestDataService;
 
 @Controller
-@RequestMapping
-public class BankController {
+@RequestMapping("/home")
+public class HomeController {
 	
 	@Autowired
 	private TestDataService testDataService;
@@ -27,7 +27,7 @@ public class BankController {
 	 * @param mav
 	 * @return
 	 */
-	@GetMapping({"test/data/create"})
+	@GetMapping("test/data/create")
 	public ModelAndView createTestData(ModelAndView mav) {
 		mav.addObject("Title", "取引銀行管理（テストデータ作成結果）");
 		
