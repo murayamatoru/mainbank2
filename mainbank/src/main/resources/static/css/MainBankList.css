@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+    .MainBankList {
+		grid-row: 3;
+		grid-column: 1;
+        overflow-y: auto;
+        background-color: white;
+    }
+    
+    /* テーブルのスタイル設定 */
+    .MainBankList table {
+        border-collapse: collapse;
+        width: 100%;
+        min-width: 500px;
+    }
+	
+	.MainBankList thead th {
+		position: sticky;
+		top: 0;
+		background-color: black;
+		color: white;
+		z-index: 1;
+		box-shadow: 0px 2px 0px black;	}
+	
+    .MainBankList th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+        background-color: pink;
+    }
+
+	/* 矢印の共通スタイル */
+	.sort-arrow {
+	    margin-left: 5px;
+	    font-size: 0.8em;
+	    color: lightgray; /* デフォルトは薄い色 */
+	    transition: color 0.2s ease;
+	}
+	/* アクティブ列の矢印 */
+	.sort-arrow.active {
+	    color: white; /* ヘッダー背景が黒なので白で目立たせる */
+	    font-weight: bold;
+	}

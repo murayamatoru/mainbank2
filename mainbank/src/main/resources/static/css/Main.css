@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+    .Main {
+		grid-row: 3;
+		grid-column: 1;
+        /*overflow-y: auto; */ /* MainBankList に指定する */
+        background-color: white;
+	   display: block;
+    }
+   
+/* 
+2025.7.11時点
+縦横自動スクロール表示OK版では、このファイル Main.css は使用していない。
+Mainの子要素としてMainBankListを指定し、
+位置的な情報を Main
+スクロールや見かけの情報をMainBankListに分担させようとしたが
+縦横スクロールが自動表示されなくなったので、この考えを断念した。
+従ってMain.cssは未使用。
+ */

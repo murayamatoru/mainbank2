@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+    /* 全体スクロールバーを非表示に */
+    body {
+        overflow: hidden;
+        margin: 0;
+    }
+
+    /* ページに余白を追加 */
+    .Page {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto; /* 4行 */
+		grid-template-columns: 1fr; /* 1列 */
+        height: 100vh; /* 余白分の高さ調整は不要*/
+        padding: 20px; /* 周囲に余白を追加 */
+        box-sizing: border-box; /* paddingを含めてサイズを計算 */
+        background-color: black; /* #f5f5f5; */ /* 余白部分の背景色（必要に応じて変更） */
+    }
+
+	

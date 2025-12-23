@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+.Menu {
+	grid-row: 2;
+	grid-column: 1;
+	padding: 1em;
+  background: #004d40;
+  display: flex;
+}
+
+.Menu > li {
+  position: relative;
+}
+
+.Menu > li > a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.Menu li ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #00695c;
+  display: none;
+  min-width: 180px;
+  z-index: 1000;
+}
+
+.Menu li:hover > ul {
+  display: block;
+}
+
+.Menu li ul li {
+  position: relative;
+}
+
+.Menu li ul li a {
+  display: block;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.Menu li ul li ul {
+  top: 0;
+  left: 100%;
+  background: #00796b;
+}
+
+.Menu li ul li:hover > ul {
+  display: block;
+}
+
+.Menu li ul li ul li ul {
+  top: 0;
+  left: 100%;
+  background: #00897b;
+}
+
+.Menu li a:hover {
+  background: #004d40;
+}
+
+/* アイコン（▶）追加 */
+.init-right::after {
+  content: ' ▶';
+  font-size: 0.8em;
+}
+
