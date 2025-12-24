@@ -9,13 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.mainbank.application.TestDataService;
 
 @Controller
-@RequestMapping("/home")
+@RequestMapping("")
 public class HomeController {
 	
 	@Autowired
 	private TestDataService testDataService;
 
-	@GetMapping("/")
+	@GetMapping({"", "/", "/home","home/"})
 	public ModelAndView showHome(ModelAndView mav) {
 		mav.addObject("Title", "取引銀行管理システム");
 		mav.setViewName("home");
@@ -27,7 +27,7 @@ public class HomeController {
 	 * @param mav
 	 * @return
 	 */
-	@GetMapping("test/data/create")
+	@GetMapping("/test/data/create")
 	public ModelAndView createTestData(ModelAndView mav) {
 		mav.addObject("Title", "取引銀行管理（テストデータ作成結果）");
 		
