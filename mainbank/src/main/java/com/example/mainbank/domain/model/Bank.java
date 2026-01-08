@@ -13,16 +13,20 @@ import jakarta.persistence.OneToMany;
 import com.example.mainbank.domain.model.enums.BankCategory;
 
 /**
- * 銀行
+ * 金融機関
+ * 銀行（都市銀行、地方銀行など）、信用金庫、信用組合、証券会社、保険会社など
  */
 @Entity
 public class Bank extends BaseEntity {
 	
-	/** 銀行名 */
+	/** 金融機関名 */
 	@Column(length = 1000)
 	private String name = "";
 	
-	/** 銀行分類 */
+	/** 金融機関コード (4桁半角数字) */
+	private String bankCode = "";
+	
+	/** 金融機関種類 */
 	@Enumerated(EnumType.STRING)
 	private BankCategory  category;
 	
@@ -41,22 +45,6 @@ public class Bank extends BaseEntity {
 		this.category = category;
 		this.mainBankList = new ArrayList<>();
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public BankCategory getCategory() {
-		return category;
-	}
-
-	public void setCategory(BankCategory category) {
-		this.category = category;
-	}
 	
 	public void addMainBank(MainBank mainBank) {
 		this.mainBankList.add(mainBank);
@@ -70,6 +58,31 @@ public class Bank extends BaseEntity {
 	public void setMainBankList(List<MainBank> mainBankList) {
 		this.mainBankList = mainBankList;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getBankCode() {
+		return bankCode;
+	}
+
+	public void setBankCode(String bankCode) {
+		this.bankCode = bankCode;
+	}
+
+	public BankCategory getCategory() {
+		return category;
+	}
+
+	public void setCategory(BankCategory category) {
+		this.category = category;
+	}
+
 }
 
 /*

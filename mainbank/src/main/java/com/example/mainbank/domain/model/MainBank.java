@@ -11,7 +11,7 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class MainBank extends BaseEntity {
 	
-	/** 銀行 */
+	/** 金融機関 */
 	@ManyToOne
 	private Bank bank;
 	

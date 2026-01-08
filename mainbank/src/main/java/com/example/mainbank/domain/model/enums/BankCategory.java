@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 /**
- * 銀行分類
+ * 金融機関種類
  */
 public enum BankCategory implements Serializable {
 	都市銀行("都銀"), 
