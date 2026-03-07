@@ -30,10 +30,6 @@ public class WebSecurityConfig {
             .csrf(csrf -> csrf.disable());
         return http.build();
     }
-
-	
-	
-	
 	
 //    /**
 //     * 基本的な設定はここで行う。
@@ -85,6 +81,5 @@ public class WebSecurityConfig {
 //    @Bean
 //    public PasswordEncoder passwordEncoder() {
 //        return new BCryptPasswordEncoder();
-//    }
-     
+//    } 
 }
