@@ -26,8 +26,8 @@ public class WebSecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
-            .csrf(csrf -> csrf.disable());
+            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll()) //全てのページを認証不要にすうる
+            .csrf(csrf -> csrf.disable()); //クロスサイトリクエストフォージェリ
         return http.build();
     }
 	
