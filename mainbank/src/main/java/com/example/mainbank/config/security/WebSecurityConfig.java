@@ -1,5 +1,20 @@
 package com.example.mainbank.config.security;
 
+/*
+SpringSecurotyを無効（デフォルト挙動）にするためには
+@Configuration
+@EnableWebSecurity
+の付いたクラス
+例：public class WebSecurityConfig {
+コメントアウトする or 削除する。
+
+このようにセキュリティ関係を一切未設定にすると、
+SpringSecurityはデフォルト動作になり、
+①全ページ認証必須、
+②デフォルトログイン表示、==> デフォルトユーザは id=test password=test と思われる
+③デフォルトユーザが自動生成される。
+*/
+
 /**
  * Spring Securityの設定を行うクラス。
  * 1. ConfigurationとEnableWebSecurityアノテーションを付ける
