@@ -56,6 +56,38 @@ public class WebSecurityConfig {
 }
 
 /*
+========
+追加説明(1)
+========
+Spring Securityの挙動について
+（１）SpringInitialzrで初期プロジェクト作成時に
+DependenciesからSpring Securityを追加した場合
+そのプロジェクトを起動するとログイン画面が表示される。
+test / test（？） でログイン可能
+
+（２）DependenciesにSpring Securityを追加したプロジェクトで
+WebSecurityConfig（@Configuration　@EnableWebSecurityが付いたクラス）で挙動を設定する。
+注：@EnableWebSecurityが無くてもテスト出来た。SpringInitialzrが何か設定したかも。
+
+（３）無限リダイレクトびなるケース
+            .formLogin(form -> form
+              //  .loginPage("/login") // loginPageを指定無しにすると、Spring Securityは自前のデフォルトログイン画面を表示する
+                .defaultSuccessUrl("/", true)
+                .permitAll()
+            )
+ .loginPageかあると、/loginを処理するコントローラ、ビューは自作していないので、ログイン処理不能となって
+再度ログインを試みる、その結果、リダイレクトが繰り返される。（詳細は必要になったら再調査する。ここではここまで）
+無限リダイレクトとなることがSpringSecurityの仕様。
+画面はこのサイトは動いていません。リダイレクトが繰り返されました…と表示される。
+
+（４）無限リダイレクトを回避する方法
+① /loginを処理するコントローラ、ビューを自作する
+②  .loginPage("/login") をコメントアウトする
+loginPageが指定されていない場合、SpringSecurityは自前のログイン画面を表示するので、
+admin / password でログインできる。
+*/ 
+
+/*
 ここから 補足解説
 Webアプリケーションの認証・認可設定において、
 「ログインページは誰でも見れるが、それ以外のページはログインが必要」
